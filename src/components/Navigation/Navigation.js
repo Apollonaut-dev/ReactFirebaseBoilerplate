@@ -40,6 +40,9 @@ const NavigationAuth = () => {
           <Link to={ROUTES.ADMIN}>Admin</Link>
         </li>
         <li>
+          <Link to={ROUTES.TYPE_UID_AND_DISPLAY}>Get user name by id</Link>
+        </li>
+        <li>
           <SignOutButton />
         </li>
       </ul>
@@ -56,6 +59,9 @@ const NavigationNonAuth = () => {
         </li>
         <li>
           <Link to={ROUTES.LANDING}>Landing</Link>
+        </li>
+        <li>
+          <Link to={ROUTES.TYPE_UID_AND_DISPLAY}>Get user name by id</Link>
         </li>
       </ul>
     </div>

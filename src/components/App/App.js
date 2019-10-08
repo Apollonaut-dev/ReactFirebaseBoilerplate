@@ -12,6 +12,7 @@ import SignInPage from '../SignIn';
 import PasswordForgetPage from '../PasswordForget';
 import AccountPage from '../Account';
 import AdminPage from '../Admin';
+import TypeUidAndDisplay from '../TypeUIDAndDisplay';
 
 import * as ROUTES from '../../constants/routes';
 import { withFirebase } from '../Firebase';
@@ -67,6 +68,7 @@ class App extends Component {
             <Route path={ROUTES.HOME} component={HomePage} />
             <Route path={ROUTES.ACCOUNT} component={AccountPage} />
             <Route path={ROUTES.ADMIN} component={AdminPage} />
+            <Route path={ROUTES.TYPE_UID_AND_DISPLAY} component={TypeUidAndDisplay} />
           </div>
         </Router>
       </AuthUserContext.Provider>
