@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { withFirebase } from '../Firebase';
 
-const INITIAL_STATE = { user_id: '' };
+const INITIAL_STATE = { user_id: '', user_name: null, error: '' };
 
 class TypeUIDAndDisplay extends Component {
   constructor(props) {
@@ -19,10 +19,11 @@ class TypeUIDAndDisplay extends Component {
     console.log(user_id);
     this.props.firebase.userContactInfo(user_id).once('value')
       .then(snap => {
-        console.log(snap.val());
         this.setState({ user_name: `${snap.val().firstName} ${snap.val().lastName}` })
       })
-      .catch(console.log);
+      .catch((err) => {
+        this.setState({ error: 'Permission denied' });
+      });
   }
 
   onChange(event) {
@@ -43,7 +44,7 @@ class TypeUIDAndDisplay extends Component {
           />
           <button type="submit">Get user</button>
         </form>
-        <p className="user-name">{this.state.user_name}</p>
+        <p className="user-name">{this.state.user_name ? this.state.user_name : this.state.error}</p>
       </div>
     );
   }
