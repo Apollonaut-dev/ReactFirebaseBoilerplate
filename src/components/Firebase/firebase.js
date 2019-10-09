@@ -41,8 +41,8 @@ class Firebase {
     return this.auth.currentUser.updatePassword(password);
   }
 
-  user = uid => {
-    return this.db.ref(`users/${uid}`);
+  userContactInfo = uid => {
+    return this.db.ref(`users/${uid}/contactInfo`);
   }
 
   users = () => {
