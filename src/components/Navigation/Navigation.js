@@ -43,6 +43,9 @@ const NavigationAuth = () => {
           <Link to={ROUTES.TYPE_UID_AND_DISPLAY}>Get user name by id</Link>
         </li>
         <li>
+          <Link to={ROUTES.TYPE_UID_AND_DISPLAY_WITH_HTTP_TRIGGER}>Get user name by http trigger</Link>
+        </li>
+        <li>
           <SignOutButton />
         </li>
       </ul>
