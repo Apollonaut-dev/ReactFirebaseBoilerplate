@@ -3,22 +3,20 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 admin.initializeApp();
 
+const cors = require('cors')({
+  origin: true
+});
+
 // const cors = require('cors')({origin: true});
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
 //
 exports.getUser = functions.https.onRequest((req, res) => {
-  
+
   res.set('Access-Control-Allow-Origin', '*');
 
-  if (req.method === 'OPTIONS') {
-    console.log('preflight');
-    res.set('Access-Control-Allow-Methods', 'GET');
-    res.set('Access-Control-Allow-Headers', 'Content-Type');
-    res.set('Access-Control-Max-Age', '3600');
-    res.status(204).send('');
-  } else {
+  return cors(req, res, () => {
     const uid = req.query.uid;
     if (uid) {
       // res.set('Access-Control-Max-Age', '3600');
@@ -39,11 +37,5 @@ exports.getUser = functions.https.onRequest((req, res) => {
           res.end();
         });
     }
-  }
-
-  // cors(req, res, () => {
-  //   const uid = req.query.uid;
-
-    
-  // });
+  });
 });
