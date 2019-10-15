@@ -1,0 +1,23 @@
+{
+  "rules": {
+    "projects": {
+			"$projectId": {
+    		".read":	"root.child('users/' + auth.uid + '/private/projects/'+ $projectId).val() === true",
+       	".write": "!data.exists() || root.child('users/' + auth.uid + '/private/projects/'+ $projectId).val() === true",
+				".validate": "newData.hasChildren(['projectName', 'projectId', 'companyName', 'imagePath'])"	
+    	}
+		},
+    "users": {
+      "$uid": {
+        "contactInfo": {
+          ".read": "root.child('users/' + auth.uid + '/contactInfo/company').val() === root.child('users/' + $uid + '/contactInfo/company').val()",
+          ".write": "false"
+        },
+      	"private": {
+          ".read": "$uid === auth.uid",
+          ".write": "false"
+        }
+      }
+    }
+  }
+}
