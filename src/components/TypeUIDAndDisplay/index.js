@@ -16,7 +16,6 @@ class TypeUIDAndDisplay extends Component {
   onSubmit(event) {
     const { user_id } = this.state;
     event.preventDefault();
-    console.log(user_id);
     this.props.firebase.userContactInfo(user_id).once('value')
       .then(snap => {
         this.setState({ user_name: `${snap.val().firstName} ${snap.val().lastName}` })
@@ -27,7 +26,6 @@ class TypeUIDAndDisplay extends Component {
   }
 
   onChange(event) {
-    console.log(event.target.value);
     this.setState({ user_id: event.target.value })
   }
 

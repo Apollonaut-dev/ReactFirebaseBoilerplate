@@ -44,6 +44,7 @@ class Firebase {
   }
 
   userContactInfo = uid => {
+    console.log(this.db.ref(`users/${uid}/contactInfo`));
     return this.db.ref(`users/${uid}/contactInfo`);
   }
 

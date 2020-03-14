@@ -19,10 +19,10 @@ class TypeUIDAndDisplayWithHttpTrigger extends Component {
     console.log(user_id);
     
     fetch(`https://us-central1-react-firebase-a8fbf.cloudfunctions.net/getUser?uid=${this.state.user_id}`)
-      .then(response => response.json() )
-      .then(responseobj => {
+      .then(response => {
+        const json = response.json();
         this.setState({
-          user_name: `${responseobj.firstName} ${responseobj.lastName}`
+          user_name: `${json.firstName} ${json.lastName}`
         });
       })
       .catch(err => {
@@ -32,7 +32,6 @@ class TypeUIDAndDisplayWithHttpTrigger extends Component {
         console.log(err);
       })
       .finally(() => {
-        console.log(`Callback at ${Date(Date.now())}`)
         console.log(this.state)
       });
     this.setState({
